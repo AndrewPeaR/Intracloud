@@ -1,0 +1,33 @@
+// Fonts
+$font-main: "Open Sans", 'Roboto', sans-serif
+$font-accent: "Merriweather Sans", 'Roboto', sans-serif
+
+// Colors
+$background: #141414
+$text: #141414
+$accent: #4CC3F8
+$card: #2A2A30
+$gray200: #6D6C78
+$gray100: #D5D7DC
+$white: #fff
+$service_yellow: #CDF263
+$service_red: #F2636C
+$service_green: #91F263
+$service_mint: #63F2D8
+$service_violet: #A359FF
+$service_orange: #FF891C
+$service_blue: #8075FF
+
+// Mixins
+@mixin font-styles($font-size, $font-weight, $line-height, $letter-spacing, $color)
+    font-size: $font-size
+    font-weight: $font-weight
+    line-height: $line-height
+    letter-spacing: $letter-spacing
+    color: $color
+
+@mixin transition
+    transition: all 0.35s ease-in
+
+@mixin fast-transition
+    transition: all 0.2s ease-out
