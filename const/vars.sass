@@ -18,6 +18,10 @@ $service_violet: #A359FF
 $service_orange: #FF891C
 $service_blue: #8075FF
 
+:export
+    serviceYellow: $service_yellow
+    serviceRed: $service_red
+
 // Mixins
 @mixin font-styles($font-size, $font-weight, $line-height, $letter-spacing, $color)
     font-size: $font-size
@@ -25,6 +29,12 @@ $service_blue: #8075FF
     line-height: $line-height
     letter-spacing: $letter-spacing
     color: $color
+
+@mixin font-styles-withoutColor($font-size, $font-weight, $line-height, $letter-spacing)
+    font-size: $font-size
+    font-weight: $font-weight
+    line-height: $line-height
+    letter-spacing: $letter-spacing
 
 @mixin transition
     transition: all 0.35s ease-in
