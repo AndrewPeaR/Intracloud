@@ -1,13 +1,11 @@
 <script setup></script>
 
 <template>
-  <div class="wrapper">
-    <div class="buttons">
-      <ElementsButton :type="'primary'" :text="'Оставить заявку'" />
-      <ElementsButton :type="'secondary'" :text="'Оставить заявку'" />
-      <ElementsButton :type="'text'" :text="'Оставить заявку'" />
-    </div>
+  <div>
+    <HeaderBlock />
     <MainCardsBlock />
+    <AboutBlock />
+    <FooterBlock />
   </div>
 </template>
 
@@ -22,4 +20,7 @@ body
     background-color: $background
     height: 100vh
 
+.section-title
+  @include font-styles(48px, 700, 121%, 0.02em, $white)
+  text-transform: uppercase
 </style>

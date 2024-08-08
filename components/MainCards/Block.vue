@@ -4,13 +4,13 @@ const cardsInfo = [{
     name: 'Центр корпоративного обслуживания',
     count: 5,
     color: 'yellow',
-    tagLink: 'bezopasnost'
+    tagLink: 'centr-korporativnogo-obsluzhivaniya'
 }, {
     id: 2,
     name: 'Отказоустойчивость',
     count: 5,
     color: 'red',
-    tagLink: 'bezopasnost'
+    tagLink: 'otkazoustojchivost'
 }, {
     id: 3,
     name: 'Безопасность',
@@ -22,25 +22,25 @@ const cardsInfo = [{
     name: 'Инфраструктура',
     count: 14,
     color: 'mint',
-    tagLink: 'bezopasnost'
+    tagLink: 'infrastruktura'
 }, {
     id: 5,
     name: 'Связь',
     count: 6,
     color: 'violet',
-    tagLink: 'bezopasnost'
+    tagLink: 'svyaz'
 }, {
     id: 6,
     name: 'Оперативная помощь',
     count: 6,
     color: 'orange',
-    tagLink: 'bezopasnost'
+    tagLink: 'operativnaya-pomoshh'
 }, {
     id: 7,
     name: 'ЭДО',
     count: 6,
     color: 'blue',
-    tagLink: 'bezopasnost'
+    tagLink: 'edo'
 }]
 </script>
 
@@ -69,6 +69,7 @@ const cardsInfo = [{
     z-index: 2
     overflow: hidden
     padding: 96px 0 44px
+    margin-bottom: 88px
     display: grid
     gap: 30px
     grid-template-columns: repeat(3, 1fr)
@@ -92,26 +93,6 @@ const cardsInfo = [{
 @keyframes main-background
     0%
         transform: rotate(0deg)
-    // 50%
-    //     transform: rotate(9deg)
     100%
         transform: rotate(14deg)
-
-
-@keyframes test
-    0%
-        // 1
-        transform: rotate(0)
-    25%
-        // 2
-        transform: rotate(9deg)
-    50%
-        // 3
-        transform: rotate(14deg)
-    75%
-        // 4
-        transform: rotate(9deg)
-    100%
-        // 5
-        transform: rotate(0)
 </style>

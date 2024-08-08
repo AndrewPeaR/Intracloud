@@ -1,4 +1,5 @@
 <script setup>
+// types: primary, secondary, text
 const props = defineProps([
     'type', 'text'
 ])
@@ -7,7 +8,7 @@ const props = defineProps([
 <template>
     <button class="btn" :class="type">
         {{ text }}
-        <IconArrow alt="arrow" :fontControlled="false" filled class="btn__arrow"/>
+        <!-- <IconArrow alt="arrow" :fontControlled="false" filled class="btn__arrow"/> -->
     </button>
 </template>
 
