@@ -1,14 +1,14 @@
 <script setup>
 // types: primary, secondary, text
 const props = defineProps([
-    'type', 'text'
+    'type', 'text', 'icon', 'typeButtons'
 ])
 </script>
 
 <template>
-    <button class="btn" :class="type">
+    <button class="btn" :class="type" :type="typeButtons">
         {{ text }}
-        <!-- <IconArrow alt="arrow" :fontControlled="false" filled class="btn__arrow"/> -->
+        <IconArrow v-if="icon" alt="arrow" :fontControlled="false" filled class="btn__arrow"/>
     </button>
 </template>
 

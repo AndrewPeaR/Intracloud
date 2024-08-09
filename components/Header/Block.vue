@@ -2,13 +2,13 @@
     <div class="wrapper">
         <header class="header">
             <div class="header__logo">
-                <NuxtLink :to="'#'">
+                <NuxtLink :to="'/'">
                     <ElementsLogo />
                 </NuxtLink>
             </div>
             <div class="header__nav">
                 <nav class="nav">
-                    <NuxtLink :to="'#'"><IconPhone alt="Phone" :fontControlled="false" filled /></NuxtLink>
+                    <NuxtLink :to="'/contacts'"><IconPhone alt="Phone" :fontControlled="false" filled /></NuxtLink>
                     <NuxtLink :to="'#'"><IconCalculateWhite alt="CalculateWhite" :fontControlled="false" filled /></NuxtLink>
                 </nav>
             </div>
@@ -24,8 +24,11 @@
 
 <style lang="sass">
 .header
+    padding-top: 50px
     display: flex
     justify-content: space-between
+    margin-bottom: 24px
+    padding-bottom: 24px
 .nav
     display: flex
     gap: 16px

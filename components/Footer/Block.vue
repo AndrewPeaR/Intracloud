@@ -4,13 +4,13 @@
   <div class="wrapper">
     <footer class="footer">
         <div class="footer__logo">
-            <NuxtLink :to="'#'">
+            <NuxtLink :to="'/'">
                 <ElementsLogo />
             </NuxtLink>
         </div>
       <div class="footer__wrapper">
         <div class="footer__links">
-            <NuxtLink :to="'#'" class="footer__link">Контакты</NuxtLink>
+            <NuxtLink :to="'/contacts'" class="footer__link">Контакты</NuxtLink>
             <NuxtLink :to="'#'" class="footer__link">Услуги</NuxtLink>
         </div>
         <div class="footer__copyrights">
