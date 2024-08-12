@@ -1,19 +1,11 @@
 <script setup>
-// import colors from '@/sass/vars.module.sass'
-
 const props = defineProps([
     'name', 'count', 'color'
 ])
 
-const cardsColors = {
-    'yellow': '#CDF263',
-    'red': '#F2636C',
-    'green': '#91F263',
-    'mint': '#63F2D8',
-    'violet': '#A359FF',
-    'orange': '#FF891C',
-    'blue': '#8075FF'
-}
+const cardsColors = inject('cardsColors')
+// console.log(cardsColors);
+
 const cardColor = cardsColors[props.color]
 // const example = ref("mainCard")
 // if (example.value) { 

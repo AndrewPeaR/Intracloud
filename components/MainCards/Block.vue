@@ -42,15 +42,45 @@ const cardsInfo = [{
     color: 'blue',
     tagLink: 'edo'
 }]
+
+const cardsInfoTest = ref([])
+const isLoading = ref(false)
+
+const fetchServices = async () => {
+    try {
+        await fetch('https://6878975d52b32495.mokky.dev/services')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                cardsInfoTest.value = data
+            })
+            .catch(error => console.error(error));
+    
+    } catch (err) {
+        console.log(err);
+    }
+}
+
+onMounted(async () => {
+    isLoading.value = true
+    await fetchServices()
+    isLoading.value = false
+
+})
+
 </script>
 
 <template>
-    <div class="wrapper main">
+    <div class="wrapper main" v-if="isLoading === false">
         <!-- :to="card.tagLink" -->
       <NuxtLink
-        v-for="card in cardsInfo"
+        v-for="card in cardsInfoTest"
         :key="card.id"
-        :to="'#'"
+        :to="`/services/${card.id}`"
         class="main__card"
       >
           <MainCardsCard 
