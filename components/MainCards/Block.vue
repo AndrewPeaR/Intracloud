@@ -80,7 +80,7 @@ onMounted(async () => {
       <NuxtLink
         v-for="card in cardsInfoTest"
         :key="card.id"
-        :to="`/services/${card.id}`"
+        :to="`/service/${card.id}`"
         class="main__card"
       >
           <MainCardsCard 

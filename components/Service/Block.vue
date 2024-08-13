@@ -4,18 +4,7 @@ const service = reactive({})
 const isLoading = ref(true)
 
 const cardsColors = inject('cardsColors')
-const bgImages = {
-    'yellow': 'assets/images/services-yellow.png',
-    'red': 'assets/images/services-red.png',
-    'green': 'assets/images/services-green.png',
-    'mint': 'assets/images/services-mint.png',
-    'violet': 'assets/images/services-violet.png',
-    'orange': 'assets/images/services-orange.png',
-    'blue': 'assets/images/services-blue.png'
-}
-
 let cardColor = ''
-let backgroundUrl = ''
 
 const fetchService = async () => {
     try {
@@ -29,7 +18,6 @@ const fetchService = async () => {
             .then(data => {
                 service.value = data[0]
                 cardColor = cardsColors[service.value.color]
-                backgroundUrl = bgImages[service.value.color]
             })
             .catch(error => console.error(error));
     
@@ -51,7 +39,7 @@ onMounted(async () => {
             <h2 class="service__title">{{ service.value.name }}</h2>
             <div class="service__cards">
                 <img class="service__background" :src='`../_nuxt/assets/images/services-${service.value.color}.png`' :alt="`${service.value.color}`"/>
-                <ServiceCard v-for="card in service.value.cardList.cards" :key="card.id" :color="cardColor" :card="card"/>
+                <ServiceCard class="service__card" v-for="card in service.value.cardList.cards" :key="card.id" :color="cardColor" :card="card"/>
             </div>
         </div>
     </section>
@@ -73,6 +61,7 @@ onMounted(async () => {
     grid-template-columns: repeat(3, 1fr)
     grid-template-rows: repeat(2, 1fr)
     gap: 30px
+    
 .service__background
     position: absolute
     top: -75px

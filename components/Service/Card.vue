@@ -1,39 +1,44 @@
 <script setup>
+const route = useRoute()
 const props = defineProps(["color", "card"]);
 </script>
 
 <template>
   <div class="service-card">
-    <h3 class="service-card__title">{{ card.title }}</h3>
-    <ul class="service-card__items">
-      <li class="service-card__item"
-        v-for="tag in card.tagList"
-        :key="tag.id"
-      >
-        <IconListChecked
-          class="service-card__list-type"
-          alt="list checked"
-          :fontControlled="false"
-          filled
-        />{{ tag.tag }}
-      </li>
-    </ul>
-    <p class="service-card__description">
-      {{ card.description }}
-    </p>
+    <NuxtLink class="service-card__link" :to="`/about/${route.params.id}`">
+      <h3 class="service-card__title">{{ card.title }}</h3>
+      <ul class="service-card__items">
+        <li
+          class="service-card__item"
+          v-for="tag in card.tagList"
+          :key="tag.id"
+        >
+          <IconListChecked
+            class="service-card__list-type"
+            alt="list checked"
+            :fontControlled="false"
+            filled
+          />{{ tag.tag }}
+        </li>
+      </ul>
+      <p class="service-card__description">
+        {{ card.description }}
+      </p>
+    </NuxtLink>
   </div>
 </template>
 
 <style lang="sass">
 .service-card
-    display: flex
-    flex-direction: column
-    justify-content: space-between
     border-radius: 32px
     padding: 32px // ???????
     background-color: $card
     opacity: 0.8
     @include fast-transition
+.service-card__link
+    display: flex
+    flex-direction: column
+    height: 100%
 
 .service-card:hover
     background-color: v-bind(color)
@@ -68,6 +73,8 @@ const props = defineProps(["color", "card"]);
     @include fast-transition
     fill: $white
 .service-card__description
+    display: flex
+    align-items: flex-end
     margin: 0
     @include fast-transition
     text-align: right

@@ -8,14 +8,13 @@
             </div>
             <div class="header__nav">
                 <nav class="nav">
-                    <NuxtLink :to="'/contacts'"><IconPhone alt="Phone" :fontControlled="false" filled /></NuxtLink>
-                    <NuxtLink :to="'#'"><IconCalculateWhite alt="CalculateWhite" :fontControlled="false" filled /></NuxtLink>
+                    <NuxtLink :to="'/contacts'"><IconPhone class="nav__icon" alt="Phone" :fontControlled="false" filled /></NuxtLink>
+                    <NuxtLink :to="'/services'"><IconCalculateWhite class="nav__icon" alt="CalculateWhite" :fontControlled="false" filled /></NuxtLink>
                 </nav>
             </div>
         </header>
         <header class="header header_mobile">
             <nav class="nav">
-                <!-- <IconLogoText alt="CalculateWhite" :fontControlled="false" filled/> -->
                  <HeaderSwitch />
             </nav>
         </header>
@@ -36,5 +35,11 @@
     display: none
     // display: flex
     // justify-content: center
-
+.nav__icon path
+    @include fast-transition
+.nav__icon:hover path
+    stroke: $accent
+    
+.router-link-active .nav__icon path
+    stroke: $accent
 </style>
