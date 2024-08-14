@@ -29,13 +29,24 @@ onMounted(async () => {
 </script>
 
 <template>
-    <div class="wrapper">
-        <p>Color: {{ color }}</p>
-        <img v-if="!isLoading" class="" :src='`../_nuxt/assets/images/services-${color}.png`' :alt="`${color}`"/>
+    <div v-if="!isLoading" class="wrapper about-company">
+        <ElementsBack />
+        <AboutCompanyBlock class="about-company__info"/>
+        <img class="about-company__background" :src='`../_nuxt/assets/images/services-${color}.png`' :alt="`${color}`"/>
     </div>
 </template>
 
 <style lang="sass">
-p
-    color: white
+.about-company
+    position: relative
+    z-index: 3
+    margin-bottom: 136px
+.about-company__info
+    margin-top: 40px
+.about-company__background
+    position: absolute
+    z-index: -1
+    top: 75px
+    left: 0
+    width: 100%
 </style>

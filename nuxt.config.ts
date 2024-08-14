@@ -2,7 +2,16 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['nuxt-svgo', 'nuxt-swiper'],
+  modules: ['nuxt-svgo', 'nuxt-swiper', ['@vee-validate/nuxt', {
+    autoImports: true,
+    // Use different names for components
+    componentNames: {
+      Form: 'VeeForm',
+      Field: 'VeeField',
+      FieldArray: 'VeeFieldArray',
+      ErrorMessage: 'VeeErrorMessage',
+    },
+  }]],
   swiper: {
     // Swiper options
     //----------------------
