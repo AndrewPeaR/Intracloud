@@ -17,13 +17,20 @@ const contactsInfo = [
     text: "140009, Московская область, Г. О. Люберцы, ул. Митрофанова, д. 20А, этаж 6, офис 1",
   },
 ];
+const body = ref('')
 const openModal = ref(false)
 const ToggleModal = () => {
-    openModal.value = !openModal.value
-    document.querySelector('body').classList.toggle('block-scroll')
+    if(body.value){
+      openModal.value = !openModal.value
+      body.value.classList.toggle('block-scroll')
+    }
 }
-if(route.query.modal) 
+
+onMounted(() => {
+  body.value = document.querySelector('body')
+  if(Boolean(route.query.modal) === true) 
     ToggleModal()
+})
 </script>
 
 <template>
