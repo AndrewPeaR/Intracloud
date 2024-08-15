@@ -67,23 +67,7 @@ onMounted(async () => {
     top: -75px
     left: 120px
     z-index: -1
-    animation-name: backgroundAnimate
-    animation-duration: 3s
-    animation-timing-function: ease
-    animation-iteration-count: infinite
-    animation-direction: alternate-reverse
-    animation-delay: 1s
-
-@keyframes backgroundAnimate
-    0%
-        transform: scale(1, 1) rotate(0deg)
-        // transform: scale(1, 1) 
-        
-    100%
-        // Так как проект учебный, добавил rotate для небольшой красоты
-        // Очевидно, что на продакшн самовольства не будет, и все строго по дизайну
-        transform: scale(0.95, 0.95) rotate(3deg)
-        // transform: scale(0.95, 0.95) 
+    @include animation
         
 
 </style>

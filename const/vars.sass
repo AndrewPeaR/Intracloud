@@ -42,3 +42,34 @@ $service_blue: #8075FF
 
 @mixin fast-transition
     transition: all 0.2s ease-out
+
+@mixin animation
+    animation-name: backgroundAnimate
+    animation-duration: 3s
+    animation-timing-function: ease
+    animation-iteration-count: infinite
+    animation-direction: alternate-reverse
+
+@keyframes backgroundAnimate
+    0%
+        transform: scale(1, 1) rotate(0deg)
+        // transform: scale(1, 1) 
+        
+    100%
+        // Так как проект учебный, добавил rotate для небольшой красоты
+        // Очевидно, что на продакшн самовольства не будет, и все строго по дизайну
+        transform: scale(0.95, 0.95) rotate(3deg)
+        // transform: scale(0.95, 0.95) 
+
+@mixin animation_main
+    animation-name: main-background
+    animation-duration: 3s
+    animation-timing-function: ease
+    animation-iteration-count: infinite
+    animation-direction: alternate-reverse
+
+@keyframes main-background
+    0%
+        transform: rotate(0deg)
+    100%
+        transform: rotate(14deg)

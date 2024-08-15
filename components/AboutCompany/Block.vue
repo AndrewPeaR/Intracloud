@@ -40,7 +40,7 @@
         </p>
       </div>
     </div>
-    <NuxtLink :to="'/contacts'">
+    <NuxtLink :to="'/contacts?modal=true'">
         <ElementsButton class="company__button" :type="'primary'" :text="'Оставить заявку'" :icon="false"/>
     </NuxtLink>
   </section>

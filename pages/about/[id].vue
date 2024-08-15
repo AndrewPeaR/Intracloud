@@ -49,4 +49,5 @@ onMounted(async () => {
     top: 75px
     left: 0
     width: 100%
+    @include animation
 </style>

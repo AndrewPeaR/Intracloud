@@ -1,8 +1,9 @@
 <script setup>
+const route = useRoute()
 const contactsInfo = [
   {
     id: 1,
-    title: "Телефон:",
+    title: "Телефон",
     text: "+ 7 (495) 196-68-26",
   },
   {
@@ -16,15 +17,13 @@ const contactsInfo = [
     text: "140009, Московская область, Г. О. Люберцы, ул. Митрофанова, д. 20А, этаж 6, офис 1",
   },
 ];
-
 const openModal = ref(false)
-
-// console.log(document.querySelector('body').classList.toggle('block-scroll'));
-
 const ToggleModal = () => {
     openModal.value = !openModal.value
     document.querySelector('body').classList.toggle('block-scroll')
 }
+if(route.query.modal) 
+    ToggleModal()
 </script>
 
 <template>

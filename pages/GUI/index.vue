@@ -3,12 +3,10 @@
 </script>
 
 <template>
-  <div>
-    
+  <div class="">
   </div>
 </template>
 
 <style lang="sass">
-.fgsdafsadfdsa
-  margin: 0
+
 </style>

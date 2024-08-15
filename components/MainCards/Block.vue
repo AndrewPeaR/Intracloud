@@ -113,16 +113,11 @@ onMounted(async () => {
     z-index: -1
     background: url(assets/images/main-bg.png) no-repeat
     background-position: 50% 50%
-    animation: main-background 3s ease 1s infinite alternate
+    @include animation_main
 
 .main__card:nth-child(1)
     grid-area: A
 .main__card:nth-child(4)
     grid-area: D
 
-@keyframes main-background
-    0%
-        transform: rotate(0deg)
-    100%
-        transform: rotate(14deg)
 </style>

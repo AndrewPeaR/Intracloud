@@ -1,91 +1,191 @@
 <script setup>
-const props = defineProps([
-    'closeModal'
-])
+import { required, helpers } from "@vuelidate/validators";
+import { useVuelidate } from "@vuelidate/core";
 
-const isSubmitForm = ref(false)
+const props = defineProps(["closeModal"]);
+
+const isSubmitForm = ref(false);
 
 const formData = ref({
-    name: null,
-    phoneNumber: null,
-    question: null
-})
+  name: null,
+  phoneNumber: null,
+  question: null,
+});
 
-const submitForm = (values) => {
-    console.log(values);
-    // try {
-    //     await fetch(`https://6878975d52b32495.mokky.dev/contacts`, {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json;charset=utf-8'
-    //         },
-    //         body: JSON.stringify(formData.value)
-    //     })
-    //         .then(response => {
-    //             if (!response.ok) {
-    //                 throw new Error('Network response was not ok');
-    //             }
-    //             return response.json();
-    //         })
-    //         .then(data => {
-    //             console.log(data);
-    //         })
-    //         .catch(error => console.error(error));
-    
-    // } catch (err) {
-    //     console.log(err);
-    // }
-
-    isSubmitForm.value = true
-}
-
-const validateName = (value) => {
-    if (!value)
-        return 'Введите ваше имя'
-    return true
-}
 const validatePhoneNumber = (value) => {
-    if (!value)
-        return 'Введите ваш телефон'
-    const regex = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i
-    if (!regex.test(value)) {
-        return 'Введите правильное значение телефона';
+  const regex = /^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$/i;
+  if (!regex.test(value)) {
+    return false;
+  }
+  return true;
+};
+const rules = computed(() => {
+  return {
+    name: { required: helpers.withMessage("Введите свое имя", required) },
+    phoneNumber: {
+      required: helpers.withMessage("Введите свой номер телефона", required),
+      validatePhoneNumber: helpers.withMessage(
+        "Введите правильный номер телефона",
+        validatePhoneNumber
+      ),
+    },
+    question: {
+      required: helpers.withMessage(
+        "Введите ваш вопрос или предложение",
+        required
+      ),
+    },
+  };
+});
+const v$ = useVuelidate(rules, formData);
+
+const submitForm = async (event) => {
+  event.preventDefault();
+  v$.value.$validate();
+  if (!v$.value.$error) {
+    try {
+      await fetch(`https://6878975d52b32495.mokky.dev/contacts`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json;charset=utf-8",
+        },
+        body: JSON.stringify(formData.value),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Network response was not ok");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          formData.value = { name: null, phoneNumber: null, question: null };
+        })
+        .catch((error) => console.error(error));
+    } catch (err) {
+      console.log(err);
     }
-    return true
-}
-const validateQuestion = (value) => {
-    if (!value)
-        return 'Введите ваш вопрос или предложение'
-    return true
-}
+
+    isSubmitForm.value = true;
+  }
+};
 </script>
 
 <template>
-    <div class="bg-modal">
-        <div class="modal">
-            <IconCloseModal @click="closeModal" ref="modalClose" class="modal__close" :fontControlled="false" filled alt="Close" />
-            <div class="modal__wrapper" v-if="!isSubmitForm">
-                <h3 ref="test" class="modal__title">Оставить заявку</h3>
-                <p class="modal__description">Получите ответ на ваш вопрос в короткий срок</p>
-                <VeeForm @submit="submitForm" class="modal__form form">
-                    <VeeField v-model="formData.name" name="name" class="form__input" type="name" placeholder="Ваше имя" :rules="validateName" />
-                    <VeeErrorMessage name="name" />
-                    <VeeField v-model="formData.phoneNumber" name="phoneNumber" class="form__input" type="number" placeholder="Ваш телефон" :rules="validatePhoneNumber"/>
-                    <VeeErrorMessage name="phoneNumber" />
-                    <VeeField as="textarea" v-model="formData.question" name="question" class="form__input form__textarea" placeholder="Ваш вопрос / предложение" :rules="validateQuestion"/>
-                    <VeeErrorMessage name="question" />
-                    <p class="form__privacy">Продолжая, вы соглашаетесь<br />с политикой конфиденциальности</p>
-                    <ElementsButton class="form__button" :type="'primary'" :text="'Оставить заявку'" :typeButtons="'submit'" />
-                </VeeForm>
-            </div>
-            <div class="modal__wrapper modal__wrapper_submit-form" v-else>
-                <IconCheckCircle :fontControlled="false" filled alt="CheckCircle" />
-                <h3 ref="test" class="modal__title">Спасибо!</h3>
-                <p class="modal__description">Ваша заявка принята в работу</p>
-                <ElementsButton @click="isSubmitForm = false" class="form__button" :type="'primary'" :text="'Закрыть'" />
-            </div>
-        </div>
-    </div>    
+  <div class="bg-modal">
+    <div class="modal">
+      <IconCloseModal
+        @click="closeModal"
+        ref="modalClose"
+        class="modal__close"
+        :fontControlled="false"
+        filled
+        alt="Close"
+      />
+      <div class="modal__wrapper" v-if="!isSubmitForm">
+        <h3 ref="test" class="modal__title">Оставить заявку</h3>
+        <p class="modal__description">
+          Получите ответ на ваш вопрос в короткий срок
+        </p>
+        <form @submit="(event) => submitForm(event)" class="modal__form form">
+          <div class="form__input-wrapper">
+            <input
+              v-model="formData.name"
+              name="name"
+              id="name"
+              class="form__input"
+              type="name"
+              placeholder="Ваше имя"
+              @blur="v$.name.$touch"
+              :class="{
+                form__error: v$.name.$error,
+              }"
+            />
+            <IconInputError
+              v-if="v$.name.$error"
+              class="form__icon"
+              :fontControlled="false"
+              filled
+              alt="input-error"
+            />
+            <span class="form__message" v-if="v$.name.$error">{{
+              v$.name.$errors[0].$message
+            }}</span>
+          </div>
+          <div class="form__input-wrapper">
+            <input
+              v-model="formData.phoneNumber"
+              name="phoneNumber"
+              id="phoneNumber"
+              class="form__input"
+              type="number"
+              placeholder="Ваш телефон"
+              @blur="v$.phoneNumber.$touch"
+              :class="{
+                form__error: v$.phoneNumber.$error,
+              }"
+            />
+            <IconInputError
+              v-if="v$.phoneNumber.$error"
+              class="form__icon"
+              :fontControlled="false"
+              filled
+              alt="input-error"
+            />
+            <span class="form__message" v-if="v$.phoneNumber.$error">{{
+              v$.phoneNumber.$errors[0].$message
+            }}</span>
+          </div>
+          <div class="form__input-wrapper">
+            <textarea
+              v-model="formData.question"
+              name="question"
+              id="question"
+              class="form__input form__textarea"
+              placeholder="Ваш вопрос / предложение"
+              @blur="v$.question.$touch"
+              :class="{
+                form__error: v$.question.$error,
+              }"
+            />
+            <IconInputError
+              v-if="v$.question.$error"
+              class="form__icon"
+              :fontControlled="false"
+              filled
+              alt="input-error"
+            />
+            <span class="form__message" v-if="v$.question.$error">{{
+              v$.question.$errors[0].$message
+            }}</span>
+          </div>
+          <p class="form__privacy">
+            Продолжая, вы соглашаетесь<br />с политикой конфиденциальности
+          </p>
+          <ElementsButton
+            class="form__button"
+            :type="'primary'"
+            :text="'Оставить заявку'"
+            :typeButtons="'submit'"
+          />
+        </form>
+      </div>
+      <div class="modal__wrapper modal__wrapper_submit-form" v-else>
+        <IconCheckCircle :fontControlled="false" filled alt="CheckCircle" />
+        <h3 ref="test" class="modal__title">Спасибо!</h3>
+        <p class="modal__description">Ваша заявка принята в работу</p>
+        <ElementsButton
+          @click="
+            () => {
+              closeModal();
+            }
+          "
+          class="form__button"
+          :type="'primary'"
+          :text="'Закрыть'"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="sass">
@@ -103,7 +203,7 @@ const validateQuestion = (value) => {
     left: 0
 
     backdrop-filter: blur(5px)
-    
+
     @include fast-transition
 
 .bg-modal_open
@@ -115,7 +215,6 @@ const validateQuestion = (value) => {
     position: relative
     max-width: 560px
     width: 100%
-    height: 631px
     border: 1px solid $white
     border-radius: 32px
     background-color: $background
@@ -143,15 +242,11 @@ const validateQuestion = (value) => {
     text-align: center
     margin-bottom: 32px
     @include font-styles(16px, 400, 150%, 0, $white)
-// .modal__form
-    
 .form
     width: 100%
     display: flex
     flex-direction: column
     gap: 24px
-.form span
-    color: $white
 .form__input
     outline: none
     background-color: $background
@@ -159,6 +254,10 @@ const validateQuestion = (value) => {
     border-radius: 10px
     padding: 12px 64px 12px 16px
     @include font-styles(20px, 400, 150%, 0, $white)
+.form__input-wrapper
+    position: relative
+    display: flex
+    flex-direction: column
 .form__input:focus
     border: 1px solid $accent
     caret-color: $accent
@@ -173,4 +272,18 @@ const validateQuestion = (value) => {
     width: 100%
     display: flex
     justify-content: center
+.form__input-wrapper .form__icon
+    position: absolute
+    top: 11px
+    right: 16px
+.form__input
+    @include fast-transition
+.form__error
+    border-color: $service_red !important
+.form__error::placeholder
+    color: $service_red !important
+.form__message
+    margin-top: 4px
+    margin-left: 20px
+    @include font-styles(14px, 400, normal, 0, $service_red)
 </style>
