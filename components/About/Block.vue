@@ -46,7 +46,9 @@ const cardsInfo = [
                     <ElementsIcon :name="card.icon" />
                 </div>
                 <div class="about__description" v-html="card.text"></div>
-                <ElementsButton class="about__button" v-if="card.button" :type="'primary'" :text="'Оставить заявку'"/>
+                <NuxtLink v-if="card.button" :to="'/contacts?modal=true'">
+                  <ElementsButton class="about__button" :type="'primary'" :text="'Оставить заявку'"/>
+                </NuxtLink>
         </div>
       </div>
     </section>

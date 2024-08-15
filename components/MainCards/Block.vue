@@ -44,7 +44,7 @@ const cardsInfo = [{
 }]
 
 const cardsInfoTest = ref([])
-const isLoading = ref(false)
+const isLoading = ref(true)
 
 const fetchServices = async () => {
     try {
@@ -66,7 +66,6 @@ const fetchServices = async () => {
 }
 
 onMounted(async () => {
-    isLoading.value = true
     await fetchServices()
     isLoading.value = false
 
