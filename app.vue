@@ -31,4 +31,16 @@ body
 .block-scroll
     overflow: hidden
 
+@media (max-width: 1280px)
+  body
+    padding: 0 40px
+@media (max-width: 768px)
+  .section-title
+    font-size: 32px
+@media (max-width: 639px)
+  body
+    padding: 0 15px
+@media (max-width: 425px)
+  .section-title
+    font-size: 24px
 </style>

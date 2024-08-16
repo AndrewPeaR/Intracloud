@@ -72,4 +72,10 @@ const props = defineProps([
     fill: $white
 .text:hover .btn__arrow path:nth-child(2)
     stroke: $white
+
+@media (max-width: 425px)
+    .btn
+        display: flex
+        justify-content: center
+        font-size: 16px
 </style>

@@ -81,4 +81,29 @@ const cardsInfo = [
     color: $accent
 .about__button
     margin-top: 32px
+
+@media (max-width: 768px)
+  .about
+    margin-bottom: 100px
+  .about__description
+    margin-top: 20px
+  .about__cards
+    grid-template-columns: 1fr
+  .about__card
+    padding: 20px
+  .about__card:last-child
+    grid-column: 1
+  .about__title
+    margin-bottom: 40px
+  .about__icon svg
+    width: 40px
+    height: 40px
+
+@media (max-width: 425px)
+  .about
+    margin-bottom: 60px
+  .about__description
+    font-size: 16px
+  .about__button
+    width: 100%
 </style>

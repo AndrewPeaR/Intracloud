@@ -4,21 +4,14 @@ const props = defineProps([
 ])
 
 const cardsColors = inject('cardsColors')
-// console.log(cardsColors);
 
 const cardColor = cardsColors[props.color]
-// const example = ref("mainCard")
-// if (example.value) { 
-//     example.value?.style.setProperty('--cardColor', `${cardsColors[props.color]}`)
-// }
-// let root = document.documentElement
-// root.style.setProperty('--cardColor', `${cardsColors[props.color]}`)
 </script>
 
 <template>
     <div class="main-card" ref="mainCard">
         <div class="main-card__clip">
-          <h3 class="main-card__title">{{ name }}</h3>
+          <h3 class="main-card__title" v-html="name"></h3>
           <div class="main-card__wrapper">
             <p class="main-card__counter"><span>{{ count }}</span> услуг</p>
           </div>
@@ -34,7 +27,6 @@ const cardColor = cardsColors[props.color]
 
 <style lang="sass">
 .main-card
-    --cardColor: #fff
     position: relative
 
 .main-card__clip
@@ -43,8 +35,7 @@ const cardColor = cardsColors[props.color]
     box-sizing: border-box
     padding: 30px 30px 0 30px
     height: 206px
-    background-color: $card
-    opacity: 0.8
+    background-color: $cardOpacity
     border-radius: 24px
     position: relative
     @include fast-transition
@@ -68,9 +59,16 @@ const cardColor = cardsColors[props.color]
 .main-card__clip:hover .main-card__counter span
     color: $text
 
+.main-card__title br
+    display: none
 .main-card__title
     margin: 0
     height: 60px
+
+    -ms-hyphens: manual
+    -webkit-hyphens: manual
+    hyphens: manual
+
     @include font-styles-withoutColor(20px, 700, 150%, 0)
     @include fast-transition
 .main-card__wrapper
@@ -98,4 +96,31 @@ const cardColor = cardsColors[props.color]
     
 .main-card__arrow path
     stroke: v-bind(cardColor)
+
+@media (max-width: 1024px)
+    .main-card
+        width: 100%
+    .main-card__clip
+        padding: 20px
+        height: 186px
+@media (max-width: 639px)
+    .main-card__clip
+        -webkit-mask: url(assets/icons/CardClipMobile.svg), linear-gradient(#fff,#fff)
+        mask: url(assets/icons/CardClipMobile.svg), linear-gradient(#fff,#fff)
+        mask-composite: exclude
+        mask-position: bottom left
+        mask-repeat: no-repeat
+        padding: 10px
+        height: 141px
+    .main-card__arrow
+        width: 10px
+        height: 10px
+        bottom: 10px
+        left: 10px
+    .main-card__title
+        font-size: 14px
+    .main-card__counter
+        font-size: 14px
+    .main-card__counter span
+        font-size: 36px
 </style>

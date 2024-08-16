@@ -47,5 +47,18 @@
     @include font-styles(20px, 400, 150%, 0, $gray200)
 .footer__copyright:last-child
     margin-top: 6px
-
+@media (max-width: 768px)
+    .footer__links
+        gap: 20px
+@media (max-width: 425px)
+    .footer
+        padding: 24px 0
+    .footer__links
+        gap: 16px
+    .footer__link
+        font-size: 16px
+    .footer__copyright
+        font-size: 14px
+    .footer__logo
+        margin-bottom: 24px
 </style>
