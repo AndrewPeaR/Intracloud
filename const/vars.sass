@@ -43,6 +43,16 @@ $service_blue: #8075FF
 @mixin fast-transition
     transition: all 0.2s ease-out
 
+@mixin adaptive-padding
+    @media (max-width: 1280px)
+        &
+            padding-left: 40px
+            padding-right: 40px
+    @media (max-width: 640px)
+        &
+            padding-left: 15px
+            padding-right: 15px
+
 @mixin animation
     animation-name: backgroundAnimate
     animation-duration: 3s
@@ -60,6 +70,13 @@ $service_blue: #8075FF
         // Очевидно, что на продакшн самовольства не будет, и все строго по дизайну
         transform: scale(0.95, 0.95) rotate(3deg)
         // transform: scale(0.95, 0.95) 
+@media (min-width: 481px) and (max-width: 768px)
+    @keyframes backgroundAnimate
+        0%
+            transform: scale(-1, 1) rotate(0deg)
+        100%
+            transform: scale(-0.95, 0.95) rotate(3deg)
+
 
 @mixin animation_main
     animation-name: main-background

@@ -23,7 +23,9 @@
           />Рабочие места операторов
         </h3>
         <p class="company-card__description">
-            Мы устанавливаем необходимое ПО, настраиваем телефонные системы и другие инструменты, нужные для обработки входящих и исходящих звонков.
+          Мы устанавливаем необходимое ПО, настраиваем телефонные системы
+          и другие инструменты, нужные для обработки входящих и исходящих
+          звонков.
         </p>
       </div>
       <div class="company-card">
@@ -36,12 +38,19 @@
           />Рабочие места операторов
         </h3>
         <p class="company-card__description">
-            Мы устанавливаем необходимое ПО, настраиваем телефонные системы и другие инструменты, нужные для обработки входящих и исходящих звонков.
+          Мы устанавливаем необходимое ПО, настраиваем телефонные системы
+          и другие инструменты, нужные для обработки входящих и исходящих
+          звонков.
         </p>
       </div>
     </div>
     <NuxtLink :to="'/contacts?modal=true'">
-        <ElementsButton class="company__button" :type="'primary'" :text="'Оставить заявку'" :icon="false"/>
+      <ElementsButton
+        class="company__button"
+        :type="'primary'"
+        :text="'Оставить заявку'"
+        :icon="false"
+      />
     </NuxtLink>
   </section>
 </template>
@@ -63,7 +72,6 @@
 .company__cards
     display: flex
     gap: 30px
-    
 .company-card
     border-radius: 30px
     padding: 20px
@@ -73,12 +81,25 @@
     align-items: center
     @include font-styles(20px, 700, 150%, 0, $white)
 .company-card__list-type
-    margin-right: 4px
+    margin-right: 7px
 .company-card__description
     @include font-styles(20px, 400, 150%, 0, $white)
 .company__button
     max-width: 305px
     padding: 12px 64px
+
+@media (max-width: 768px)
+    .company
+        gap: 20px
+        padding: 40px
+    .company__cards
+        flex-direction: column
+        gap: 20px
+    .company__button
+        justify-content: center
+        max-width: 100%
+        width: 100%
+@media (max-width: 480px)
+    .company
+        padding: 32px 15px 32px 15px
 </style>
-
-

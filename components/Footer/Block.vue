@@ -26,6 +26,7 @@
 <style lang="sass">
 .footer
     padding: 40px 0
+    @include adaptive-padding
 .footer__logo
     text-align: center
     margin-bottom: 40px
@@ -53,6 +54,7 @@
 @media (max-width: 425px)
     .footer
         padding: 24px 0
+        @include adaptive-padding
     .footer__links
         gap: 16px
     .footer__link

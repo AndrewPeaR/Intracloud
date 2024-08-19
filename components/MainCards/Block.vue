@@ -27,7 +27,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="wrapper" v-if="isLoading === false">
+  <div class="wrapper wrapper_padding" v-if="isLoading === false">
     <div class="main main_desktop">
       <NuxtLink
         v-for="card in cardsInfo"
@@ -85,6 +85,7 @@ onMounted(async () => {
     gap: 30px
     grid-template-columns: repeat(3, 1fr)
     grid-template-areas: "A A B" "C D D" "E F G"
+
 .main_mobile
     display: none
 
@@ -108,7 +109,8 @@ onMounted(async () => {
     .main
         width: 100%
         gap: 16px
-        padding: 31px 0 1px
+        padding-top: 31px
+        padding-bottom: 1px
         grid-template-columns: 1fr 0.66fr 1fr
         grid-template-areas: "A A B" "C D D" "E E E"
     .main_flex

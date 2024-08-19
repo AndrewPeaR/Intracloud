@@ -50,4 +50,10 @@ onMounted(async () => {
     left: 0
     width: 100%
     @include animation
+@media (max-width: 1280px)
+    .about-company
+        @include adaptive-padding
+@media (max-width: 768px)
+    .about-company
+        margin-bottom: 40px
 </style>

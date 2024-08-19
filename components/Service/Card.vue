@@ -61,12 +61,12 @@ const props = defineProps(["color", "card"]);
     margin-top: 32px
     margin-bottom: 24px
     list-style: none
-    @include font-styles(20px, 400, 150%, 0, $white)
+    @include font-styles(20px, 400, normal, 0, $white)
     flex: 1 1 0%
     @include fast-transition
 
 .service-card__item
-    margin-bottom: 10px
+    margin-bottom: 16px
 .service-card__list-type
     margin-right: 4px
 .service-card__list-type path
@@ -75,8 +75,20 @@ const props = defineProps(["color", "card"]);
 .service-card__description
     display: flex
     align-items: flex-end
+    padding-left: 20px
     margin: 0
     @include fast-transition
     text-align: right
     @include font-styles(20px, 400, 150%, 0, $white)
+
+@media (max-width: 768px)
+  .service-card
+      padding: 20px
+  .service-card__items
+      margin-top: 24px
+      margin-bottom: 16px
+@media (max-width: 480px)
+  .service-card__items, .service-card__description
+    font-size: 16px
+
 </style>

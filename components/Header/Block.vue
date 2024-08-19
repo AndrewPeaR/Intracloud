@@ -15,7 +15,9 @@
         </header>
         <header class="header header_mobile">
             <nav class="nav">
-                 <HeaderSwitch />
+                <NuxtLink :to="'/contacts'">
+                    <HeaderSwitch />
+                </NuxtLink> 
             </nav>
         </header>
     </div>
@@ -28,6 +30,7 @@
     justify-content: space-between
     margin-bottom: 24px
     padding-bottom: 24px
+    @include adaptive-padding
 .nav
     display: flex
     gap: 16px
@@ -42,4 +45,11 @@
     
 .router-link-active .nav__icon path
     stroke: $accent
+
+// @media (max-width: 640px)
+//     .header
+//         display: none
+//     .header_mobile
+//         display: flex
+//         justify-content: center
 </style>

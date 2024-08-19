@@ -58,6 +58,7 @@ const cardsInfo = [
 <style lang="sass">
 .about
     margin-bottom: 136px
+    @include adaptive-padding
 .about__title
     margin-bottom: 56px
 .about__cards
