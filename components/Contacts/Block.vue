@@ -1,5 +1,4 @@
 <script setup>
-const route = useRoute()
 const contactsInfo = [
   {
     id: 1,
@@ -17,25 +16,11 @@ const contactsInfo = [
     text: "140009, Московская область, Г. О. Люберцы, ул. Митрофанова, д. 20А, этаж 6, офис 1",
   },
 ];
-const body = ref('')
-const openModal = ref(false)
-const ToggleModal = () => {
-    if(body.value){
-      openModal.value = !openModal.value
-      body.value.classList.toggle('block-scroll')
-    }
-}
-
-onMounted(() => {
-  body.value = document.querySelector('body')
-  if(Boolean(route.query.modal) === true) 
-    ToggleModal()
-})
+const props = defineProps(['ToggleModal'])
 </script>
 
 <template>
   <section class="contacts wrapper">
-    <ContactsModalForm :class="openModal ? 'bg-modal_open' : ''" :closeModal="ToggleModal"/>
     <h2 class="section-title section-title_center">Эксперт в области IT</h2>
     <div class="contacts__items">
       <!--Знаю, есть специальный семантический тэг address
@@ -49,6 +34,7 @@ onMounted(() => {
           :to="`https://yandex.ru/maps/?indoorLevel=1&ll=53.460875%2C58.562565&mode=routes&rtext=60.973869%2C69.032402~55.693886%2C37.890472&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DIgoN2I8XQhWKxl5C&z=5.48`"
         >
           <ElementsButton
+          class="contacts__address"
             v-if="item.title === 'Адрес'"
             :type="'text'"
             :text="'Проложить маршрут'"
@@ -87,10 +73,21 @@ onMounted(() => {
     max-width: 560px
     text-align: center
     margin: 0
-    margin-bottom: 12px
     @include font-styles(20px, 400, 150%, 0, $white)
 .contacts__button
     width: 100%
     display: flex
     justify-content: center
+.contacts__address
+  margin-top: 17px
+@media (max-width: 768px)
+  .contacts__items
+    margin-top: 24px
+    max-width: 100%
+  .contacts__title
+    margin-bottom: 10px
+  .contacts__text, .contacts__title, .contacts__address
+    font-size: 16px
+  .contacts__item
+    margin-bottom: 24px
 </style>

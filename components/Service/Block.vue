@@ -36,7 +36,7 @@ onMounted(async () => {
     <section v-if="!isLoading" class="service">
         <div class="wrapper wrapper_padding">
             <ElementsBack />
-            <h2 class="service__title">{{ service.value.name }}</h2>
+            <h2 class="service__title" v-html="service.value.name"></h2>
             <div class="service__cards">
                 <img class="service__background" :src='`../_nuxt/assets/images/services-${service.value.color}.png`' :alt="`${service.value.color}`"/>
                 <ServiceCard class="service__card" v-for="card in service.value.cardList.cards" :key="card.id" :color="cardColor" :card="card"/>

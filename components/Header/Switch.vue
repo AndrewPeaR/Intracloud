@@ -1,6 +1,10 @@
+<script setup>
+const props = defineProps(['checked'])
+</script>
+
 <template>
     <label class="switch">
-        <input type="checkbox" class="switch__input">
+        <input type="checkbox" :checked="checked" class="switch__input">
         <span class="switch__slider">
             <p class="switch__content">контакты</p>
             <p class="switch__content">главная</p>

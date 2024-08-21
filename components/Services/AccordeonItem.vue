@@ -17,8 +17,8 @@ let cardColor = cardsColors[props.color]
         class="accordeon__checkbox"
       />
       <label :for="`accordeon__item-${item.id}`" class="accordeon__title">
-        {{ item.name }}
-        <IconAccordeonArrow class="accordeon__arrow" :fontControlled="false" filled :alt="'AccordeonArrow'"/>
+            <span v-html="item.name"></span>
+          <IconAccordeonArrow class="accordeon__arrow" :fontControlled="false" filled :alt="'AccordeonArrow'"/>
       </label>
       <div class="accordeon__content">
         <ul class="accordeon__list">
@@ -72,4 +72,11 @@ let cardColor = cardsColors[props.color]
     list-style-type: none
 .accordeon__list li
     margin-bottom: 12px
+
+@media (max-width: 480px)
+    .accordeon__list
+        padding-left: 32px
+    .accordeon__title, .accordeon__content
+        font-size: 16px
+    
 </style>

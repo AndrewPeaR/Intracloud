@@ -100,7 +100,7 @@ const cardsInfo = [
     width: 40px
     height: 40px
 
-@media (max-width: 425px)
+@media (max-width: 480px)
   .about
     margin-bottom: 60px
   .about__description

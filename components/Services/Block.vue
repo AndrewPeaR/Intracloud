@@ -92,4 +92,8 @@ onMounted(async () => {
 .services__input:focus
     outline: none 
     background-color: $card
+@media (max-width: 768px)
+    .services__input
+        width: 140px
+
 </style>

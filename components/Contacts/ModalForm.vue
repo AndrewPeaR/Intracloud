@@ -68,11 +68,18 @@ const submitForm = async (event) => {
     isSubmitForm.value = true;
   }
 };
+
+function modalClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    e.stopImmediatePropagation();
+    return false;
+  }
 </script>
 
 <template>
-  <div class="bg-modal">
-    <div class="modal">
+  <div class="bg-modal" @click="closeModal">
+    <div class="modal" @click="(e) => modalClick(e)">
       <IconCloseModal
         @click="closeModal"
         ref="modalClose"
@@ -86,7 +93,7 @@ const submitForm = async (event) => {
         <p class="modal__description">
           Получите ответ на ваш вопрос в короткий срок
         </p>
-        <form @submit="(event) => submitForm(event)" class="modal__form form">
+        <form class="modal__form form">
           <div class="form__input-wrapper">
             <input
               v-model="formData.name"
@@ -162,6 +169,7 @@ const submitForm = async (event) => {
             Продолжая, вы соглашаетесь<br />с политикой конфиденциальности
           </p>
           <ElementsButton
+            @click="(event) => submitForm(event)"
             class="form__button"
             :type="'primary'"
             :text="'Оставить заявку'"
@@ -170,7 +178,7 @@ const submitForm = async (event) => {
         </form>
       </div>
       <div class="modal__wrapper modal__wrapper_submit-form" v-else>
-        <IconCheckCircle :fontControlled="false" filled alt="CheckCircle" />
+        <IconCheckCircle class="modal__submit-icon" :fontControlled="false" filled alt="CheckCircle" />
         <h3 ref="test" class="modal__title">Спасибо!</h3>
         <p class="modal__description">Ваша заявка принята в работу</p>
         <ElementsButton
@@ -191,28 +199,29 @@ const submitForm = async (event) => {
 <style lang="sass">
 .bg-modal
     opacity: 0
-    display: flex
-    justify-content: center
-    align-items: center
-
     position: fixed
     z-index: -3
-    width: 100%
-    height: 100%
     top: 0
     left: 0
-
+    bottom: 0
+    right: 0
     backdrop-filter: blur(5px)
-
+    padding: 0 15px
     @include fast-transition
 
 .bg-modal_open
     opacity: 1
-    z-index: 5
+    z-index: 10
 
 .modal
     box-sizing: border-box
     position: relative
+    // position: absolute
+    top: 50%
+    left: 50%
+    z-index: 15
+    transform: translate(-50%, -50%)
+    // 
     max-width: 560px
     width: 100%
     border: 1px solid $white
@@ -234,6 +243,7 @@ const submitForm = async (event) => {
     right: 24px
     cursor: pointer
 .modal__title
+    margin-top: 0
     margin-bottom: 4px
     text-transform: uppercase
     @include font-styles(24px, 700, 130%, 0.02em, $white)
@@ -242,6 +252,13 @@ const submitForm = async (event) => {
     text-align: center
     margin-bottom: 32px
     @include font-styles(16px, 400, 150%, 0, $white)
+.modal__wrapper_submit-form
+    padding: 80px 0
+.modal__submit-icon
+    margin-bottom: 40px
+.modal__wrapper_submit-form .modal__description
+    margin: 0
+    margin-bottom: 40px
 .form
     width: 100%
     display: flex
@@ -266,6 +283,7 @@ const submitForm = async (event) => {
 .form__textarea
     resize: vertical
 .form__privacy
+    margin: 0
     text-align: center
     @include font-styles(14px, 400, normal, 0, $gray100)
 .form__button
@@ -286,4 +304,12 @@ const submitForm = async (event) => {
     margin-top: 4px
     margin-left: 20px
     @include font-styles(14px, 400, normal, 0, $service_red)
+
+@media (max-width: 480px)
+  .modal
+    padding: 48px 20px
+  .form__input::placeholder, .form__input
+    font-size: 16px
+  .form
+    gap: 16px
 </style>

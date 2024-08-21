@@ -1,6 +1,11 @@
+<script setup>
+const router = useRoute();
+</script>
+
+
 <template>
     <div class="wrapper">
-        <header class="header">
+        <header class="header header_desktop">
             <div class="header__logo">
                 <NuxtLink :to="'/'">
                     <ElementsLogo />
@@ -15,7 +20,10 @@
         </header>
         <header class="header header_mobile">
             <nav class="nav">
-                <NuxtLink :to="'/contacts'">
+                <NuxtLink v-if="router.name === 'contacts'" :to="'/'">
+                    <HeaderSwitch :checked="true"/>
+                </NuxtLink> 
+                <NuxtLink v-else :to="'/contacts'">
                     <HeaderSwitch />
                 </NuxtLink> 
             </nav>
@@ -36,8 +44,6 @@
     gap: 16px
 .header_mobile
     display: none
-    // display: flex
-    // justify-content: center
 .nav__icon path
     @include fast-transition
 .nav__icon:hover path
@@ -46,10 +52,10 @@
 .router-link-active .nav__icon path
     stroke: $accent
 
-// @media (max-width: 640px)
-//     .header
-//         display: none
-//     .header_mobile
-//         display: flex
-//         justify-content: center
+@media (max-width: 768px)
+    .header_desktop
+        display: none
+    .header_mobile
+        display: flex
+        justify-content: center
 </style>
