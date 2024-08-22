@@ -32,7 +32,7 @@ onMounted(async () => {
     <div v-if="!isLoading" class="wrapper about-company">
         <ElementsBack />
         <AboutCompanyBlock class="about-company__info"/>
-        <img class="about-company__background" :src='`/assets/images/services-${color}.png`' :alt="`${color}`"/>
+        <img class="about-company__background" :src='`/images/services-${color}.png`' :alt="`${color}`"/>
     </div>
 </template>
 

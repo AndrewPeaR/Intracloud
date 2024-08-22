@@ -22,7 +22,7 @@ let cardColor = cardsColors[props.color]
       </label>
       <div class="accordeon__content">
         <ul class="accordeon__list">
-            <li v-for="tags in item.cardList.cards" :key="tags.id">{{ tags.title }}</li>
+            <li v-for="tags in item.cardList.cards" :key="tags.id"><NuxtLink :to="`/about/${item.id}`">{{ tags.title }}</NuxtLink></li>
         </ul>
       </div>
     </div>
@@ -70,8 +70,13 @@ let cardColor = cardsColors[props.color]
 
 .accordeon__list
     list-style-type: none
-.accordeon__list li
+.accordeon__list li a
+    color: $white
+    @include fast-transition
     margin-bottom: 12px
+.accordeon__list li a:hover
+    color: $accent
+    
 
 @media (max-width: 480px)
     .accordeon__list

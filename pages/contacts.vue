@@ -9,7 +9,7 @@ const openModal = ref(false)
 const ToggleModal = () => {
     if(body.value){
       openModal.value = !openModal.value
-      // body.value.classList.toggle('block-scroll')
+      body.value.classList.toggle('block-scroll')
     }
 }
 
@@ -45,8 +45,8 @@ onMounted(() => {
           </SwiperSlide>
         </Swiper>
       </div>
-      <ContactsModalForm :class="openModal ? 'bg-modal_open' : ''" :closeModal="ToggleModal"/>
     </div>
+    <ContactsModalForm :class="openModal ? 'bg-modal_open' : ''" :closeModal="ToggleModal"/>
   </div>
 </template>
 

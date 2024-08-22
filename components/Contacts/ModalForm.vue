@@ -124,7 +124,7 @@ function modalClick(e) {
               name="phoneNumber"
               id="phoneNumber"
               class="form__input"
-              type="number"
+              type="tel"
               placeholder="Ваш телефон"
               @blur="v$.phoneNumber.$touch"
               :class="{
