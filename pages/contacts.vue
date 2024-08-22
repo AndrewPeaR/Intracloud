@@ -24,7 +24,7 @@ onMounted(() => {
   <div>
     <div class="wrapper wrapper_padding wrapper_desktop">
       <ElementsBack />
-      <ContactsBlock />
+      <ContactsBlock :ToggleModal="ToggleModal"/>
     </div>
     <div class="wrapper wrapper_padding wrapper_mobile">
       <div class="contacts__swiper">

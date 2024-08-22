@@ -44,9 +44,10 @@ const cardColor = cardsColors[props.color]
     -webkit-mask-composite: destination-out
     -webkit-mask-position: bottom left
     -webkit-mask-repeat: no-repeat
-    mask: url(assets/icons/CardClip.svg), linear-gradient(#fff,#fff)
+    mask: url(assets/icons/CardClip.svg), linear-gradient(#fff, #fff)
+    // mask: url(assets/icons/CardClip.svg)
     mask-composite: exclude
-    mask-position: bottom left
+    mask-position: 0 101%
     mask-repeat: no-repeat
     
 .main-card__clip:hover

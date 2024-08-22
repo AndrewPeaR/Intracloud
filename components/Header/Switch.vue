@@ -1,15 +1,17 @@
 <script setup>
-const props = defineProps(['checked'])
+const props = defineProps(["checked"]);
+
+
 </script>
 
 <template>
-    <label class="switch">
-        <input type="checkbox" :checked="checked" class="switch__input">
-        <span class="switch__slider">
-            <p class="switch__content">контакты</p>
-            <p class="switch__content">главная</p>
-        </span>
-    </label>
+  <label class="switch">
+    <input type="checkbox" :checked="checked" class="switch__input" />
+    <span class="switch__slider">
+      <p class="switch__content">контакты</p>
+      <p class="switch__content">главная</p>
+    </span>
+  </label>
 </template>
 
 <style lang="sass">
