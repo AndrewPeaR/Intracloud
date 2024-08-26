@@ -4,8 +4,7 @@
 
 <template>
   <div class="wrapper divved">
-    <HeaderSwitch />
-    <input type="checkbox" role="switch">
+    <HeaderDragSwitch />
   </div>
 </template>
 
