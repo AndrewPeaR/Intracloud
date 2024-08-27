@@ -1,82 +1,65 @@
 <script setup>
 const props = defineProps(["checked"]);
-
-
 </script>
 
 <template>
-  <label class="switch">
-    <input type="checkbox" :checked="checked" class="switch__input" />
-    <span class="switch__slider">
-      <p class="switch__content">контакты</p>
-      <p class="switch__content">главная</p>
-    </span>
-  </label>
+  <div class="wrapper__div">
+    <!-- <svg
+      class="svg"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 200 200"
+      preserveAspectRatio="none"
+    >
+      preserveAspectRatio="xMaxYmax meet"
+      <defs>
+        <mask id="hole">
+          <rect width="100%" height="100%" fill="white" />
+          <svg
+            width="41"
+            height="44"
+            viewBox="0 0 41 44"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="xMaxYmax meet"
+          >
+            <path
+              d="M14.1379 14.5C3.29885 13 0.157088 4.33333 0 0V28C0 36.8366 7.16344 44 16 44H41C31.9517 42.4 28.7471 34.3333 28.2759 30.5C27.3333 25.5 25.0373 16.0083 14.1379 14.5Z"
+              fill="black"
+            />
+          </svg>
+        </mask>
+      </defs>
+      <rect fill="red" width="100%" height="100%" mask="url(#hole)" />
+    </svg> -->
+
+    <div id="box">
+        <mask id="hole" maskUnits="objectBoundingBox">
+            <!-- <path d="M14.1379 14.5C3.29885 13 0.157088 4.33333 0 0V28C0 36.8366 7.16344 44 16 44H41C31.9517 42.4 28.7471 34.3333 28.2759 30.5C27.3333 25.5 25.0373 16.0083 14.1379 14.5Z" fill="black"/> -->
+             <!-- <circle></circle> -->
+        </mask>
+      <div id="innerbox">
+        Content
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="sass">
-// Стили для переключателя
-.switch
-    display: inline-block
-    position: relative
-    height: 54px
-    width: 169px
-
-// Скрыть оформление checkbox
-.switch__input
-    height: 0
-    width: 0
-    opacity: 0
-
-.switch__content
-    margin: 0
-    @include transition
-.switch__content:last-child
-    margin-top: 80px
-.switch__slider
-    overflow: hidden
+.wrapper__div
+    max-width: 600px
+    height: 300px
+.svg
     position: absolute
-    cursor: pointer
-    top: 0
-    left: 0
-    right: 0
+    height: 100%
     bottom: 0
-    height: 54px
-    width: 169px
-    box-sizing: border-box
-    border-radius: 32px
-    padding: 2px 26px 2px 26px
-    display: flex
-    flex-direction: row-reverse
-    justify-content: flex-end
-    align-items: center
-    @include font-styles(14px, 400, normal, 0, $gray200)
-    @include transition
-
-    background-color: $card
-
-.switch__slider::before
-    content: url(assets/images/LogoImage.png)
-    position: absolute
-    z-index: 5
-    cursor: pointer
-    left: 2px
-    top: 2px
-    border-radius: 32px
-    width: 52px
-    height: 50px
-    box-sizing: border-box
-    padding-top: 5px
-    display: flex
-    justify-content: center
-
+    left: 0
+#box
+    mask: radial-gradient(ellipse 50% 50% at 0 0, transparent 100%, #000 0), linear-gradient(#fff, #fff)
+    mask-composite: exclude
+    mask-position: bottom left
+    mask-repeat: no-repeat
+    border-radius: 30px
     background-color: $white
-    @include transition
-
-.switch__input:checked + .switch__slider::before
-    transform: translateX(113px)
-.switch__input:checked + .switch__slider
-    padding-left: 30px
-.switch__input:checked + .switch__slider .switch__content
-    transform: translate3d(-4px, -40px, 0)
+    position: relative
+    height: 206px
+    width: 400px
 </style>
