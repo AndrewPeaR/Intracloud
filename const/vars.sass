@@ -77,6 +77,13 @@ $service_blue: #8075FF
         100%
             transform: scale(-0.95, 0.95) rotate(3deg)
 
+@media (max-width: 480px)
+    @keyframes backgroundAnimate
+        0%
+            transform: scale(-1, -1) rotate(0deg)
+        100%
+            transform: scale(-0.95, -0.95) rotate(3deg)
+
 
 @mixin animation_main
     animation-name: main-background

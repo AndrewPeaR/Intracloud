@@ -41,6 +41,7 @@ onMounted(async () => {
     position: relative
     z-index: 3
     margin-bottom: 136px
+    overflow: hidden
 .about-company__info
     margin-top: 40px
 .about-company__background
@@ -56,4 +57,11 @@ onMounted(async () => {
 @media (max-width: 768px)
     .about-company
         margin-bottom: 40px
+@media (max-width: 480px)
+    .about-company__info
+        margin-top: 100px
+    .about-company__background
+        width: 150%
+        left: -20%
+        top: -50px
 </style>
