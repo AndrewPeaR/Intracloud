@@ -44,8 +44,9 @@ const cardColor = cardsColors[props.color]
     -webkit-mask-composite: destination-out
     -webkit-mask-position: bottom left
     -webkit-mask-repeat: no-repeat
-    mask: url(assets/icons/CardClip.svg), linear-gradient(#fff, #fff)
-    // mask: url(assets/icons/CardClip.svg)
+    // mask: url(assets/icons/CardClip.svg), linear-gradient(#fff, #fff)
+    mask: url(assets/icons/clip.svg)
+    mask-size: cover
     mask-composite: exclude
     mask-position: 0 101%
     mask-repeat: no-repeat
@@ -106,8 +107,8 @@ const cardColor = cardsColors[props.color]
         height: 186px
 @media (max-width: 639px)
     .main-card__clip
-        -webkit-mask: url(assets/icons/CardClipMobile.svg), linear-gradient(#fff,#fff)
-        mask: url(assets/icons/CardClipMobile.svg), linear-gradient(#fff,#fff)
+        -webkit-mask: url(assets/icons/clipMobile.svg)
+        mask: url(assets/icons/clipMobile.svg)
         mask-composite: exclude
         mask-position: bottom left
         mask-repeat: no-repeat

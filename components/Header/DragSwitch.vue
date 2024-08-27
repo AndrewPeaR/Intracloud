@@ -101,7 +101,7 @@ const { position, style } = makeDragable(el);
 
 <template>
   <div ref="elParent" class="toggle">
-    <div ref="el" :style="style" class="toggle__switch"><img src="/images/LogoImage.png" alt="LogoImage"></div>
+    <div ref="el" :style="style" class="toggle__switch"><img draggable="false" src="/images/LogoImage.png" alt="LogoImage"></div>
   </div>
 </template>
 
