@@ -20,12 +20,8 @@ const router = useRoute();
         </header>
         <header class="header header_mobile">
             <nav class="nav">
-                <NuxtLink v-if="router.name === 'contacts'" :to="'/'">
-                    <HeaderSwitch :checked="true"/>
-                </NuxtLink> 
-                <NuxtLink v-else :to="'/contacts'">
-                    <HeaderSwitch />
-                </NuxtLink> 
+                <HeaderDragSwitch v-if="router.name === 'contacts'" :checked="true"/>
+                <HeaderDragSwitch v-else :checked="false"/>
             </nav>
         </header>
     </div>
